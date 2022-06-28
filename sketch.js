@@ -16,97 +16,111 @@ function preload() {
 function setup() {
   createCanvas(600, 600);
 
-  spookySound.loop();
-  tower = createSprite(300, 300);
-  tower.addImage("tower", towerImg);
-  tower.velocityY = 1;
+  //  REPRODUCIR spookySound EN CICLO (O LOOP)
   
-  doorsGroup = new Group();
-  climbersGroup = new Group();
-  invisibleBlockGroup = new Group();
+
+  //  INICIALIZAR TOWER CON SPRITE DE 300 X 300, AGREGAR SU IMAGEN Y DAR VELOCIDAD EN Y DE 1
   
-  ghost = createSprite(200, 200, 50, 50);
-  ghost.scale = 0.3;
-  ghost.addImage("ghost", ghostImg);
+  
+  
+
+  //  INICIALIZAR COMO NUEVOS GRUPOS doorsGroup, climbersGroup E invisibleBlockGroup
+
+
+
+  
+  //  CONFIGURAR SPRITE PARA GHOST
+
+
+
 }
 
 function draw() {
-  background(0);
-  if (gameState === "play") {
-    
-    if(keyDown("left_arrow")) {
-      ghost.x = ghost.x - 3;
-    }
-    if(keyDown("right_arrow")) {
-      ghost.x = ghost.x + 3;
-    }
-    if(keyDown("space")) {
-      ghost.velocityY = -10;
-    }
-    ghost.velocityY = ghost.velocityY + 0.8;
-    
-    if(tower.y > 400) {
-      tower.y = 300;
-    }
-    
-    spawnDoors();
-    
-    //climbersGroup.collide(ghost);
-    if(climbersGroup.isTouching(ghost)) {
-      ghost.velocityY = 0;
-    }
-    if(invisibleBlockGroup.isTouching(ghost) || ghost.y > 600) {
-      ghost.destroy();
-      gameState = "end";
-    }
-    
-    drawSprites();
-  }
-  
-  if (gameState === "end") {
-    stroke("yellow");
-    fill("yellow");
-    textSize(30);
-    text("Game Over", 230, 250);
-  }
+  background(200);
 
+  if (gameState === "play") {
+    //  PROGRAMAR LAS FLECHAS A LA IZQUIERDA Y A LA DERECHA, Y EL ESPACIO PARA SALTAR
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //  HACER CAER AL FANTASMA
+    
+
+    //  NO PERMITIR QUE LA TORRE SALGA DEL MAPA POR ABAJO
+    
+    
+    
+    //  APARECER PUERTAS
+    
+
+    //  DETENER FANTASMA SI CHOCA CON ALGUNA CONSTRUCCIÓN DEL GRUPO
+    
+    
+    
+    //  DESTRUIR FANTASMA Y TERMINAR EL JUEGO SI EL FANTASMA SE CAE O SI TOCA UN OBSTÁCULO INVISIBLE
+    
+    
+    
+    
+  }
+  //  CONFIGURAR ESTADO DE JUEGO "end"
+  
+  
+  
+  
+  
+  
+  
+  drawSprites();
 }
 
-// aparecer puertas
+//  FUNCIÓN PARA APARECER PUERTAS EN LA TORRE
 function spawnDoors() {
   if (frameCount % 240 === 0) {
-    var door = createSprite(200, -50);
-    var climber = createSprite(200,10);
-    var invisibleBlock = createSprite(200,15);
+    //  DECLARAR VARIABLES PARA door Y climber
+    
+    
 
-    invisibleBlock.width = climber.width;
-    invisibleBlock.height = 2;
+    //  DECLARAR Y invisibleBlock Y CONFIGURAR SU ANCHO DEL TAMAÑO DE climber Y SU ALTO EN 2
     
-    door.x = Math.round(random(120,400));
-    climber.x = door.x;
-    invisibleBlock.x = door.x;
     
-    door.addImage(doorImg);
-    climber.addImage(climberImg);
     
-    door.velocityY = 1;
-    climber.velocityY = 1;
-    invisibleBlock.velocityY = 1;
     
-    ghost.depth = door.depth;
-    ghost.depth += 1;
-   
-    // se asignan los tiempos de vida a los objetos
-    door.lifetime = 800;
-    climber.lifetime = 800;
-    invisibleBlock.lifetime = 800;
+    //  CONFIGURAR LA POSICIÓN EN X DE door, climber E invisibleBlock EN EL MISMO LUGAR ALEATORIO
     
-    // se agrega cada objeto a su grupo
-    doorsGroup.add(door);
-    climbersGroup.add(climber);
     
-    invisibleBlock.debug = true;
-    invisibleBlockGroup.add(invisibleBlock);
+    
+    
+    //  CONFIGURAR LA POSICIÓN EN Y en 1 PARA door, climber E invisibleBlock
+    
+    
+    
+    
+    //  AGREGAR IMÁGENES PARA door Y climber
+    
+    
+    
+    //  INTERCAMBIAR depth DE ghost Y door, QUEREMOS QUE LA DE ghost SEA LA MAYOR
+    
+    
+    
+    //  ASIGNAR TIEMPO DE VIDA DE 800 A LOS SPRITES
+    
+    
+    
+
+    //  AGREGAR door, climber E invisibleBlock AL GRUPO CORRESPONDIENTE
+    
+    
+    
+
+    //  AGREGAR debud A invisibleBlock
+    
   }
-
 }
